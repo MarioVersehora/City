@@ -16,6 +16,7 @@ public class PublicTransportService {
     }
 
     public void deletePublicTransport(Integer publicTransportId) {
+        publicTransportRepository.deleteById(publicTransportId);
 
     }
 

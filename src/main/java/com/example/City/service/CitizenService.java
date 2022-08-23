@@ -14,7 +14,7 @@ public class CitizenService {
     private final CitizenRepository citizenRepository;
 
     public void softDelete(Integer citizenId) {
-        citizenR
+        citizenRepository.deleteById(citizenId);
     }
 
 

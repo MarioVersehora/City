@@ -1,5 +1,6 @@
 package com.example.City.service;
 
+import com.example.City.exception.NoCityException;
 import com.example.City.model.City;
 import com.example.City.model.Hospital;
 import com.example.City.repository.CityRepository;
@@ -17,17 +18,18 @@ public class CityService {
     private final CityRepository cityRepository;
     private final MoveEventRepository moveEventRepository;
 
-    public List<Hospital> getAllHospitalsFromCity(Integer cityId) {
+    public List<Hospital> getAllHospitalsFromCity(Integer cityId) throws NoCityException {
         Optional<City> city = cityRepository.findById(cityId);
         if(city.isEmpty()) {
-            return null;
+            throw new NoCityException("No city found!");
         }
 
         return city.get().getHospitalList();
     }
 
 //    public Long numberOfAllCitizens(Integer cityId) {
-//        return moveEventRepository.
+//        return moveEventRepository.findAll().stream()
+//                .filter(me -> me.)
 //    }
 
 
